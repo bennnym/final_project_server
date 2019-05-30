@@ -4,11 +4,15 @@ class StudentsController < ApplicationController
   end
 
   def create 
-    @student = Student.new student_params
+    @student = Student.create! student_params
 
     if @student.save
+      return
+    else 
+      raise 'email already taken'
     end
-
+      
+    # end
   end
 
     private
