@@ -19,4 +19,6 @@
 
 class Student < ApplicationRecord
   belongs_to :employers, :optional => true
+  has_secure_password
+  validates :email, :presence => true, :uniqueness => true
 end
