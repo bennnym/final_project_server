@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: employers
+#
+#  id              :bigint(8)        not null, primary key
+#  first_name      :string
+#  last_name       :string
+#  email           :text
+#  company         :string
+#  password_digest :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email: MyText
+  company: MyString
+  password_digest: MyText
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email: MyText
+  company: MyString
+  password_digest: MyText

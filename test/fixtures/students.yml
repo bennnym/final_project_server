@@ -1,0 +1,44 @@
+# == Schema Information
+#
+# Table name: students
+#
+#  id               :bigint(8)        not null, primary key
+#  first_name       :string
+#  last_name        :string
+#  email            :text
+#  university       :text
+#  gpa              :decimal(, )
+#  profile_photo    :text
+#  cv               :text
+#  reserve_price    :integer
+#  auction_duration :datetime
+#  password_digest  :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email: MyText
+  university: MyText
+  gpa: 9.99
+  profile_photo: MyText
+  cv: MyText
+  reserve_price: 1
+  auction_duration: 2019-05-30 14:05:15
+  password_digest: MyText
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email: MyText
+  university: MyText
+  gpa: 9.99
+  profile_photo: MyText
+  cv: MyText
+  reserve_price: 1
+  auction_duration: 2019-05-30 14:05:15
+  password_digest: MyText
