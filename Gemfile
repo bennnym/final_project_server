@@ -26,7 +26,7 @@ gem 'pry-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'seed-fu', '~> 2.3'
 gem 'cloudinary'
-
+gem 'knock'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
