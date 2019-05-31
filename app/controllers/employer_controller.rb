@@ -1,12 +1,13 @@
 class EmployerController < ApplicationController
   def create
-    @employer = Employer.new employer_params
+    employer = Employer.new employer_params
 
-    if @employer.save
+    if employer.save
       return 
     else 
       raise 'email already taken'
     end
+
   end
 
     private
