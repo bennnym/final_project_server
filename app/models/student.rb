@@ -7,7 +7,7 @@
 #  last_name        :string
 #  email            :text
 #  university       :text
-#  gpa              :decimal(, )
+#  gpa              :float
 #  profile_photo    :text
 #  cv               :text
 #  reserve_price    :integer
@@ -15,10 +15,13 @@
 #  password_digest  :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  employer_id      :integer
 #
 
 class Student < ApplicationRecord
-  belongs_to :employers, :optional => true
+  has_one :employer, through: :bids 
+  has_many :bids 
+
   has_secure_password
   validates :email, :presence => true, :uniqueness => true
 end

@@ -1,6 +1,32 @@
 class StudentsController < ApplicationController
 
-  def new
+  def all
+    students = Student.all.order(:auction_duration)
+
+     students = students.select do |s| 
+      if s.auction_duration
+        s.auction_duration - Time.now().utc > 0
+      end
+    end
+
+   render :json => students.to_json(only: [:id, :first_name, :last_name,:university,:gpa,:reserve_price,:auction_duration,:profile_photo,:cv,:email], :include => :bids )
+  end
+
+  def ending
+    students = Student.order(:auction_duration)
+
+    students = students.select do |s| 
+      if s.auction_duration
+        s.auction_duration - Time.now().utc > 0
+      end
+    end
+
+    students = students.take(10)
+
+    render :json => students.to_json(only: [:id, :first_name, :last_name,:university,:gpa,:reserve_price,:auction_duration,:profile_photo,:cv,:email], :include => :bids )
+
+    ## gets the 10 auctions ending soon
+    # render json: students.to_json(only: [:id, :first_name, :last_name,:university,:gpa,:reserve_price,:auction_duration,:profile_photo,:cv,:email, :bids]) 
   end
 
   def create 
