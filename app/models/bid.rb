@@ -13,4 +13,5 @@
 class Bid < ApplicationRecord
   belongs_to :employer
   belongs_to :student 
+ default_scope {order("#{self.table_name}.amount DESC")} # this sorts bids by highest to lowest
 end
