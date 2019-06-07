@@ -9,7 +9,7 @@ class BidController < ApplicationController
     offers_info = []
 
      offers.each do |o|
-      bid_info = {"student" => o.student, "bid" => o}
+      bid_info = {"student" => o.student, "student_bids" => o.student.bids[0],"bid" => o}
       offers_info.append(bid_info)
     end
 
