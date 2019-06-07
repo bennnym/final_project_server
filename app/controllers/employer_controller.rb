@@ -3,10 +3,19 @@ class EmployerController < ApplicationController
     employer = Employer.new employer_params
 
     if employer.save
+      # render json: employer
+      render json: employer.to_json(only: %i[id])
       return 
     else 
       raise 'email already taken'
     end
+
+  end
+
+  def getid
+    employer = Employer.find_by email: params[:email]
+
+    render json: employer.to_json(only: %i[id])
 
   end
 

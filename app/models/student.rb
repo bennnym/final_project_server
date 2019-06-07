@@ -20,7 +20,10 @@
 
 class Student < ApplicationRecord
   has_one :employer, through: :bids 
-  has_many :bids 
+  has_many :bids
+  has_one :employer, through: :watchlists 
+  has_many :watchlists
+
 
   has_secure_password
   validates :email, :presence => true, :uniqueness => true

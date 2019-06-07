@@ -15,7 +15,9 @@
 class Employer < ApplicationRecord
   has_many :students, through: :bids 
   has_many :bids
-
+  has_many :students, through: :watchlists
+  has_many :watchlists
+  
   has_secure_password
   validates :email, :presence => true, :uniqueness => true
 end

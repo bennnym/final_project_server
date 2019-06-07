@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   post '/students/bid' => 'students#quickbid'
   get '/students/ending' => 'students#ending'
   get '/students' => 'students#all'
+  get 'student/:id' => 'students#profile'
 
   post '/employer/create' => 'employer#create'
+  post '/getid' => 'employer#getid'
+
+  post '/watchlist/:id' => 'watchlist#toggle'
+
+  get '/getbids/:id' => 'bid#getbids'
+  
 end

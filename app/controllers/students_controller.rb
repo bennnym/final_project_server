@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StudentsController < ApplicationController
   def quickbid
     if params[:student_id] && params[:employer_email] && params[:bid_amount]
@@ -5,12 +7,11 @@ class StudentsController < ApplicationController
       employer = Employer.find_by email: params[:employer_email]
       student = Student.find_by id: params[:student_id]
       @bid.employer_id = employer.id
+      @bid.company = employer.company
       @bid.student_id = params[:student_id]
       @bid.amount = params[:bid_amount]
 
       raise 'employer not found' if @bid.employer_id.nil?
-
-      
 
       if @bid.save
         return render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email], include: :bids)
@@ -73,6 +74,11 @@ class StudentsController < ApplicationController
     else
       raise 'email already taken'
     end
+  end
+
+  def profile 
+    student = Student.find_by id: params[:id]
+    render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email], include: [:bids, :watchlists])
   end
 
   private
