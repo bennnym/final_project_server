@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   post '/getid' => 'employer#getid'
 
   post '/watchlist/:id' => 'watchlist#toggle'
+  get '/watchlist/:id' => 'watchlist#get_watchlists'
 
   get '/getbids/:id' => 'bid#getbids'
+  get '/winningbids/:id' => 'bid#winningbids'
+
+
   
 end
