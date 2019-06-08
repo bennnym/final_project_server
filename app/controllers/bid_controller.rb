@@ -27,7 +27,7 @@ class BidController < ApplicationController
     winning_bids = []
 
     offers.each do |bid|
-      next unless bid.student.bids[0].amount == bid.amount && bid.student.bids[0].employer_id == bid.employer_id
+      next unless bid.student.bids[0].amount == bid.amount && bid.student.bids[0].employer_id == bid.employer_id && bid.student.auction_duration < Time.now()
 
       winning_bid_info = { 'bid' => bid, 'student' => bid.student, 'bid_count' => bid.student.bids.count }
 
