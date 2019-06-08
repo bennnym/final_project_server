@@ -23,12 +23,19 @@ class WatchlistController < ApplicationController
   def get_watchlists
     employer = Employer.find_by id: params[:id]
 
-    watchlist = employer.watchlists
+    watchlist = employer.watchlists.reverse_order
 
     watchlist_data = []
 
     watchlist.each do |watch|
-      card_data = { 'watchlist' => watch, 'student' => watch.student }
+
+       if watch.student.bids.size >= 1
+          top_price = watch.student.bids[0].amount
+       else  
+         top_price = 0
+       end
+
+      card_data = { 'watchlist' => watch, 'student' => watch.student, "current_price" => top_price, "bid_count" => watch.student.bids.count }
       watchlist_data.append(card_data)
     end
 
