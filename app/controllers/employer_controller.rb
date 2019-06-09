@@ -19,6 +19,12 @@ class EmployerController < ApplicationController
 
   end
 
+  def getinfo
+    employer = Employer.find_by id: params[:id]
+
+    render json: employer.to_json(only: %i[company])
+  end
+
     private
     def employer_params
     params.permit(:first_name,:last_name,:company, :email, :password, :password_confirmation) 
