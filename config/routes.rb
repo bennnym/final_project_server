@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/students/ending' => 'students#ending'
   get '/students' => 'students#all'
   get 'student/:id' => 'students#profile'
+  post '/getstudentid' => 'student#getstudentid'
+
 
   post '/employer/create' => 'employer#create'
   post '/getid' => 'employer#getid'
