@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   post '/employer/create' => 'employer#create'
   post '/getid' => 'employer#getid'
+  post '/employer/update' => 'employer#update'
   get '/employer/:id' => 'employer#getinfo'
 
   post '/watchlist/:id' => 'watchlist#toggle'

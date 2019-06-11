@@ -25,6 +25,17 @@ class EmployerController < ApplicationController
     render json: employer
   end
 
+  def update 
+    employer = Employer.find_by id: params[:id]
+    employer.password = params[:password] if params[:password]
+    employer.password_confirmation = params[:password_confirmation] if params[:password_confirmation]
+    if employer.save 
+      render json: employer
+    else
+      raise 'error'
+    end
+  end
+
     private
     def employer_params
     params.permit(:first_name,:last_name,:company, :email, :password, :password_confirmation) 
