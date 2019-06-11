@@ -22,7 +22,7 @@ class EmployerController < ApplicationController
   def getinfo
     employer = Employer.find_by id: params[:id]
 
-    render json: employer.to_json(only: %i[company])
+    render json: employer
   end
 
     private
