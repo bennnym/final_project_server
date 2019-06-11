@@ -78,7 +78,7 @@ class StudentsController < ApplicationController
 
   def profile 
     student = Student.find_by id: params[:id]
-    render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email, password_digest], include: [:bids, :watchlists])
+    render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email password_digest], include: [:bids, :watchlists])
   end
 
    def studentid
