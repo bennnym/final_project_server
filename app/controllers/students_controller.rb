@@ -76,16 +76,29 @@ class StudentsController < ApplicationController
     end
   end
 
-  def profile 
+  def profile
     student = Student.find_by id: params[:id]
-    render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email password_digest], include: [:bids, :watchlists])
+    render json: student.to_json(only: %i[id first_name last_name university gpa reserve_price auction_duration profile_photo cv email password_digest], include: %i[bids watchlists])
   end
 
-   def studentid
+  def studentid
     student = Student.find_by email: params[:email]
 
     render json: student.to_json(only: %i[id])
+ end
 
+  def update
+    student = Student.find_by id: params[:id]
+
+    student.email = params[:email] if params[:email]
+    student.gpa = params[:gpa] if params[:gpa]
+    student.reserve_price = params[:reserve_price] if params[:reserve_price]
+    student.university = params[:university] if params[:university]
+    student.password = params[:password] if params[:password]
+    student.password_confirmation = params[:password_confirmation] if params[:password_confirmation]
+    student.save
+
+    render json: student
   end
 
   private
@@ -94,3 +107,11 @@ class StudentsController < ApplicationController
     params.permit(:first_name, :last_name, :university, :gpa, :reserve_price, :email, :password, :password_confirmation, :auction_duration) # :profile_photo, :cv,
   end
 end
+
+#  id: localStorage.studentID,
+#       email,
+#       gpa,
+#       reserve_price: reservePrice,
+#       university,
+#       password,
+#       password_confirmation: passwordConfirm

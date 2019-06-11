@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'employer_token' => 'employer_token#create'
 
   post '/students/create' => 'students#create'
+  post '/student/update' => 'students#update'
   post '/students/bid' => 'students#quickbid'
   get '/students/ending' => 'students#ending'
   get '/students' => 'students#all'
