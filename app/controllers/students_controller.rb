@@ -94,11 +94,14 @@ class StudentsController < ApplicationController
     student.gpa = params[:gpa] if params[:gpa]
     student.reserve_price = params[:reserve_price] if params[:reserve_price]
     student.university = params[:university] if params[:university]
+
     student.password = params[:password] if params[:password]
     student.password_confirmation = params[:password_confirmation] if params[:password_confirmation]
-    student.save
-
-    render json: student
+     if student.save
+       render json: student
+     else
+      raise 'error'
+     end
   end
 
   private
